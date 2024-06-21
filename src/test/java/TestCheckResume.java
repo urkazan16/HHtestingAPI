@@ -1,39 +1,16 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.hamcrest.Matchers;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import request.Resume;
-import user.UserAuthorizationFields;
-
-//import static jdk.nashorn.tools.Shell.SUCCESS;
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 import static constants.ResponseText.RESUME_ITEMS;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TestCheckResume {
-
-    private UserAuthorizationFields userToken;
-
-    public Resume getResume;
-    @Before
-    public void setUp() {
-        getResume = new Resume();
-        userToken = new UserAuthorizationFields();
-//        userRequest = new UserRequest();
-//        userRegistrationFields = RandomTestUser.getRandomRegistration();
-//        token = userRequest.regUser(userRegistrationFields).path(ACCESS_TOKEN);
-    }
-
-    @After
-    public void clearDate() {
-//        if (token != null && !token.isBlank()) {
-//            userRequest.deletingUser(token);
-//        }
-    }
+public class TestCheckResume extends ConfTest{
 
     @Test
     @DisplayName("Проверка наличия резюме")
@@ -42,5 +19,15 @@ public class TestCheckResume {
         response.assertThat()
                 .statusCode(200)
                 .and().body(RESUME_ITEMS, notNullValue());
+    }
+
+    @Test
+    @DisplayName("Проверка статуса резюме")
+    public void checkStatusResume() throws IOException, InterruptedException {
+        ValidatableResponse response = getResume.getResume(userToken.getToken());
+        List<String> accessTypeNames = response.extract().path("items.access.type.name");
+        for (String currentKey : accessTypeNames.get(2).split(",")) {
+            assertThat(currentKey, equalTo("видно выбранным компаниям"));
+        }
     }
 }

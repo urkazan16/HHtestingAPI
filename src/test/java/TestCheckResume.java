@@ -1,5 +1,6 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import user.UserAuthorizationFields;
 //import static jdk.nashorn.tools.Shell.SUCCESS;
 import java.io.IOException;
 
+import static constants.ResponseText.RESUME_ITEMS;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
 
 public class TestCheckResume {
@@ -33,12 +36,11 @@ public class TestCheckResume {
     }
 
     @Test
-    @DisplayName("Check Resume")
+    @DisplayName("Проверка наличия резюме")
     public void checkResume() throws IOException {
-        ValidatableResponse response = getResume.getOrder(userToken.getToken());
+        ValidatableResponse response = getResume.getResume(userToken.getToken());
         response.assertThat()
                 .statusCode(200)
-                .and();
-//                .body("SUCCESS", equalTo(true));
+                .and().body(RESUME_ITEMS, notNullValue());
     }
 }

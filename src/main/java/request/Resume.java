@@ -11,8 +11,8 @@ public class Resume  extends Header {
 
     private static final String ORDER_URL = BASE_URL + "resumes/";
 
-    @Step("Get order {requestBody}")
-    public ValidatableResponse getOrder(String requestBody) {
+    @Step("Get resume {requestBody}")
+    public ValidatableResponse getResume(String requestBody) {
         return given()
                 .spec(getRequestAuthSpec(requestBody))
                 .get(ORDER_URL+"mine").then();

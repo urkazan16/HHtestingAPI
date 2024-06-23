@@ -1,17 +1,14 @@
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static constants.ResponseText.RESUME_ITEMS;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class TestCheckCreateResume extends ConfTest{
+public class TestCheckCreateResume extends ConfTest {
 
 //private String resumeId;
 
@@ -28,7 +25,7 @@ public class TestCheckCreateResume extends ConfTest{
     @DisplayName("Удаление резюме")
     public void checkDeleteResume() throws IOException {
         Response responseResume = getResume.getResumeId(userToken.getToken());
-       String resumeId = responseResume.path("items.id").toString().replaceAll("\\[|\\]", "");
+        String resumeId = responseResume.path("items.id").toString().replaceAll("\\[|\\]", "");
         ValidatableResponse response = getResume.deleteResume(userToken.getToken(), resumeId);
         response.assertThat()
                 .statusCode(204)

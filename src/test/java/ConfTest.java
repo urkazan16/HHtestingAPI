@@ -7,11 +7,11 @@ public class ConfTest {
     public UserAuthorizationFields userToken;
 
     public Resume getResume;
+
     @Before
     public void setUp() {
         getResume = new Resume();
         userToken = new UserAuthorizationFields();
-
     }
 
     @After

@@ -8,11 +8,10 @@ import io.restassured.response.ValidatableResponse;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class Resume  extends Header {
+public class Resume extends Header {
 
 
     private static final String ORDER_URL = BASE_URL + "resumes/";
@@ -27,7 +26,7 @@ public class Resume  extends Header {
     public ValidatableResponse getResume(String requestBody) {
         return given()
                 .spec(getRequestAuthSpec(requestBody))
-                .get(ORDER_URL+"mine").then();
+                .get(ORDER_URL + "mine").then();
     }
 
     @Step("Сreate resume {requestBody}")
@@ -40,11 +39,11 @@ public class Resume  extends Header {
     }
 
     @Step("Delete resume {}")
-    public ValidatableResponse deleteResume(String requestBody, String request_id){
+    public ValidatableResponse deleteResume(String requestBody, String request_id) {
         System.out.println(ORDER_URL + request_id);
         return given()
                 .spec(getRequestAuthSpec(requestBody))
-                .delete(ORDER_URL + request_id ).then();
+                .delete(ORDER_URL + request_id).then();
 
     }
 
@@ -52,6 +51,6 @@ public class Resume  extends Header {
     public Response getResumeId(String requestBody) {
         return given()
                 .spec(getRequestAuthSpec(requestBody))
-                .get(ORDER_URL+"mine");
+                .get(ORDER_URL + "mine");
     }
 }

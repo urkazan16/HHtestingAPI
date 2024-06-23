@@ -1,0 +1,91 @@
+{
+  "area": {
+    "id": "1"
+  },
+  "citizenship": [
+    {
+      "id": "113"
+    }
+  ],
+  "contact": [
+    {
+      "preferred": true,
+      "type": {
+        "id": "email",
+        "name": "Эл. почта"
+      },
+      "value": "my-email@example.com"
+    },
+    {
+      "comment": "Комментарий",
+      "need_verification": false,
+      "preferred": false,
+      "type": {
+        "id": "cell",
+        "name": "Мобильный телефон"
+      },
+      "value": {
+        "city": "955",
+        "country": "7",
+        "formatted": "7-955-000-0000",
+        "number": "0000000"
+      },
+      "verified": false
+    }
+  ],
+  "education": {
+    "additional": null,
+    "attestation": null,
+    "elementary": null,
+    "level": {
+      "id": "master",
+      "name": "Магистр"
+    },
+    "primary": [
+      {
+        "name": "testUniversity",
+        "name_id": null,
+        "organization": "testFaculty",
+        "organization_id": null,
+        "result": "testSpeciality",
+        "result_id": null,
+        "year": 1988
+      }
+    ]
+  },
+  "experience": [
+    {
+      "area": null,
+      "company": "Компания",
+      "company_id": null,
+      "company_url": "http://url.ru",
+      "description": "Руководил отделом",
+      "employer": null,
+      "end": "2012-02-06",
+      "industries": [],
+      "industry": null,
+      "position": "Директор",
+      "start": "2011-01-02"
+    }
+  ],
+  "first_name": "Иван",
+  "gender": {
+    "id": "male",
+    "name": null
+  },
+  "language": [
+    {
+      "id": "eng",
+      "level": {
+        "id": "a1",
+        "name": "A1"
+      },
+      "name": "Английский"
+    }
+  ],
+  "last_name": "Иванов",
+  "photo": null,
+  "portfolio": null,
+  "skills": "Свободное описание навыков",
+  "title": "RESUME"
+}

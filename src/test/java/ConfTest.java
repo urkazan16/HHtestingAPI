@@ -11,6 +11,7 @@ public class ConfTest {
     public void setUp() {
         getResume = new Resume();
         userToken = new UserAuthorizationFields();
+
     }
 
     @After

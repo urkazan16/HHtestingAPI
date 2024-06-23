@@ -3,7 +3,6 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 import static constants.ResponseText.RESUME_ITEMS;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -26,8 +25,8 @@ public class TestCheckResume extends ConfTest{
     public void checkStatusResume() throws IOException, InterruptedException {
         ValidatableResponse response = getResume.getResume(userToken.getToken());
         List<String> accessTypeNames = response.extract().path("items.access.type.name");
-        for (String currentKey : accessTypeNames.get(2).split(",")) {
-            assertThat(currentKey, equalTo("видно выбранным компаниям"));
+        for (String currentKey : accessTypeNames.get(1).split(",")) {
+            assertThat(currentKey, equalTo("не опубликовано"));
         }
     }
 }
